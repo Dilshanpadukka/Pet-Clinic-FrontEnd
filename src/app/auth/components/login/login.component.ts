@@ -9,35 +9,61 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, ReactiveFormsModule,CommonModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
 
-  loginObj: any = {
-    "email": "",
-    "password": ""
-  };
+  loginForm: FormGroup;
 
   http = inject(HttpClient);
   router = inject(Router);
-  onLogin() {
+  formBuilder = inject(FormBuilder);
 
-    this.http.post("http://localhost:8081/api/auth/login", this.loginObj).subscribe({
+  constructor() {
+    // Initialize the form with validation rules
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]], // Email validation
+      password: ['', [Validators.required, Validators.minLength(8)]] // Password validation
+    });
+  }
+
+  onLogin() {
+    if (this.loginForm.invalid) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Invalid Input',
+        text: 'Please ensure all fields are correctly filled!',
+      });
+      return;
+    }
+
+    this.http.post("http://localhost:8081/api/auth/login", this.loginForm.value).subscribe({
       next: (res: any) => {
-        console.log(res.user.id);
-        if (res.user.id != undefined) {
-          alert("Login Success");
+        if (res.user?.id) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Login Successful',
+            text: 'Welcome to the admin dashboard!',
+          });
+          localStorage.setItem("pet-clinic-user", res.jwt);
           this.router.navigateByUrl('admin');
         } else {
-          alert("Login Failed");
+          Swal.fire({
+            icon: 'error',
+            title: 'Login Failed',
+            text: 'User ID not found.',
+          });
         }
       },
       error: (err: any) => {
-        alert("Login Failed");
+        Swal.fire({
+          icon: 'error',
+          title: 'Login Failed',
+          text: 'An error occurred during login. Please try again.',
+        });
       }
-    }
-    )
+    });
   }
 }

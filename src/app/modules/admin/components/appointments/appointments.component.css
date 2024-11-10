@@ -191,6 +191,16 @@
     font-weight: 500;
     cursor: pointer;
   }
+
+  .btn-primary {
+    background-color: #4eaf5a;
+    color: #fff;
+  }
+
+  .btn-secondary {
+    background-color: #d32727;
+    color: #fff;
+  }
   .appoinment-button {
     display: flex;
     align-items: center;
@@ -205,15 +215,6 @@
     text-decoration: none;
     font: 400 20px PT Serif Caption, -apple-system, Roboto, Helvetica, sans-serif;
 }
-  .btn-primary {
-    background-color: #4eaf5a;
-    color: #fff;
-  }
-
-  .btn-secondary {
-    background-color: #d32727;
-    color: #fff;
-  }
 
   @media (max-width: 991px) {
     .form-columns {

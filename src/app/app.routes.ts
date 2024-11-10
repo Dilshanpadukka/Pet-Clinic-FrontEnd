@@ -4,6 +4,9 @@ import { PetownerDashboardComponent } from './modules/petowner/components/petown
 import { SignupComponent } from './auth/components/signup/signup.component';
 import { LoginComponent } from './auth/components/login/login.component';
 import { LandingpageComponent } from './auth/components/landingpage/landingpage.component';
+import { AddPetComponent } from './modules/admin/components/add-pet/add-pet.component';
+import { AppointmentsComponent } from './modules/admin/components/appointments/appointments.component';
+import { AddAppointmentComponent } from './modules/admin/components/add-appointment/add-appointment.component';
 
 export const routes: Routes = [
     {
@@ -22,9 +25,19 @@ export const routes: Routes = [
     {
         path: 'admin',
         component: AdminDashboardComponent,
-        children: [
-            
-        ]
+        
+    },
+    {
+        path: 'app-pet',
+        component: AddPetComponent,
+        
+    },{
+        path: 'appointments',
+        component: AppointmentsComponent
+    },
+    {
+        path: 'app-appointment',
+        component: AddAppointmentComponent
     },
     {
         path: 'petowner',

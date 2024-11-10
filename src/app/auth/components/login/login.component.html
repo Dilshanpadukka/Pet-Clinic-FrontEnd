@@ -1,54 +1,61 @@
 <div class="gradient-form" style="background-color: rgba(28, 175, 61, 0.64);">
-    <div class="container p-4">
-      <div class="row d-flex justify-content-center align-items-center mt-3">
-        <div class="col-xl-10">
-          <div class="card rounded-3 text-black">
-            <div class="row g-0">
-              <div class="col-lg-6">
-                <div class="card-body p-md-3 mx-md-4">
-                  <div class="text-center">
-                    <img src="https://cdn.builder.io/api/v1/image/assets/6bde1fe88380450c8315d7462734696d/94e06064140b2075909ddb822b84e8dfb28d8d3316c2d29b77dfde3fe0f5c9b8?apiKey=6bde1fe88380450c8315d7462734696d&" alt="Logo" class="logo" />
-                    <h4 class="mt-1 mb-2">We are The PET MED CARE</h4>
+  <div class="container p-4">
+    <div class="row d-flex justify-content-center align-items-center mt-3">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-6">
+              <div class="card-body p-md-3 mx-md-4">
+                <div class="text-center">
+                  <img src="https://cdn.builder.io/api/v1/image/assets/6bde1fe88380450c8315d7462734696d/94e06064140b2075909ddb822b84e8dfb28d8d3316c2d29b77dfde3fe0f5c9b8?apiKey=6bde1fe88380450c8315d7462734696d&" alt="Logo" class="logo" />
+                  <h4 class="mt-1 mb-2">We are The PET MED CARE</h4>
+                </div>
+
+                <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+                  <p class="text-center">Please login to your account</p>
+
+                  <div data-mdb-input-init class="form-outline mb-2">
+                    <label class="form-label" for="form2Example11">Username</label>
+                    <input type="email" id="form2Example11" class="form-control" formControlName="email" placeholder="Enter email address" />
+                    <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+                      <small *ngIf="loginForm.get('email')?.errors?.['required']">Email is required</small>
+                      <small *ngIf="loginForm.get('email')?.errors?.['email']">Invalid email format</small>
+                    </div>
                   </div>
-  
-                  <form>
-                    <p class="text-center">Please login to your account</p>
-  
-                    <div data-mdb-input-init class="form-outline mb-2">
-                        <label class="form-label" for="form2Example11">Username</label>
-                        <input type="email" id="form2Example11" class="form-control"
-                        placeholder="Enter email address" name= "email" [(ngModel)]="loginObj.email" />
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <label class="form-label" for="form2Example22">Password</label>
+                    <input type="password" id="form2Example22" class="form-control" formControlName="password" placeholder="Enter password" />
+                    <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+                      <small *ngIf="loginForm.get('password')?.errors?.['required']">Password is required</small>
+                      <small *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 8 characters</small>
                     </div>
-  
-                    <div data-mdb-input-init class="form-outline mb-4">
-                        <label class="form-label" for="form2Example22">Password</label>
-                      <input type="password" id="form2Example22" class="form-control" name= "password"  [(ngModel)]="loginObj.password"/>
-                    </div>
-  
-                    <div class="text-center pt-1 mb-2 pb-1">
-                      <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button" (click)="onLogin()" >Log
-                        in</button><br>
-                      <a class="text-muted" href="#!">Forgot password?</a>
-                    </div>
-  
-                    <div class="d-flex align-items-center justify-content-center">
-                      <p class="mb-0 me-2">Don't have an account?</p>
-                      <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-danger" routerLink="/register">Create new</button>
-                    </div>
-  
-                  </form>
-  
-                </div>
+                  </div>
+
+                  <div class="text-center pt-1 mb-2 pb-1">
+                    <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit" [disabled]="loginForm.invalid">Log in</button><br>
+                    <a class="text-muted" href="#!">Forgot password?</a>
+                  </div>
+
+                  <div class="d-flex align-items-center justify-content-center">
+                    <p class="mb-0 me-2">Don't have an account?</p>
+                    <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-danger" routerLink="/register">Create new</button>
+                  </div>
+                </form>
+
               </div>
-              <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
-                <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                  <h4 class="mb-4">At PetMedCare, we have a 25 year history of connecting, caring and curing your companion animals.</h4>
-                  <p class="small mb-0"> Bound by an organizational culture - one that fosters respect and compassion to all animals and their human caretakers - PetMedCare sets itself apart from other veterinary services in the country by treating your companion animals with the kind of care, love and kindness we show towards our own fur babies.</p>
-                </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+              <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                <h4 class="mb-4">At PetMedCare, we have a 25-year history of connecting, caring, and curing your companion animals.</h4>
+                <p class="small mb-0">
+                  Bound by an organizational culture—one that fosters respect and compassion for all animals and their human caretakers—PetMedCare sets itself apart from other veterinary services in the country by treating your companion animals with the kind of care, love, and kindness we show towards our own fur babies.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 </div>

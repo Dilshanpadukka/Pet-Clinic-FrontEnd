@@ -1,0 +1,104 @@
+<main class="appointment-form">
+    <header class="header fixed-top">
+      <img src="https://cdn.builder.io/api/v1/image/assets/6bde1fe88380450c8315d7462734696d/94e06064140b2075909ddb822b84e8dfb28d8d3316c2d29b77dfde3fe0f5c9b8?apiKey=6bde1fe88380450c8315d7462734696d&" alt="Logo" class="logo" />
+      <nav class="navigation">
+        <ul class="nav-list">
+          <li class="nav-item">DashBoard</li>
+          <li class="nav-item active" routerLink="/appointments">Appointment</li>
+          <li class="nav-item" routerLink="/pets">Pets</li>
+          <li class="nav-item">Veterians</li>
+          <li class="nav-item">Reports</li>
+          <li class="nav-item">Help Center</li>
+        </ul>
+      </nav>
+      <div class="user-profile">
+        <div class="user-info">
+          <p class="user-name">Udayanka Dilshan</p>
+          <p class="user-role"></p>
+        </div>
+        <div class="user-avatar">U</div>
+      </div>
+    </header>
+
+    <section class="form-header">
+      <h1 class="page-title">Add Appointment</h1>
+      <div class="search-bar">
+        <img src="https://cdn.builder.io/api/v1/image/assets/6bde1fe88380450c8315d7462734696d/f1ff1f0b8ff72693564542bedd29a5fc5a5dcda089f97d6fc21e5b24f826e351?apiKey=6bde1fe88380450c8315d7462734696d&" alt="Search icon" class="search-icon" />
+        <input type="text" placeholder="Search" class="search-input" />
+      </div>
+    </section>
+
+    <form class="appointment-details">
+      <div class="form-columns">
+        <div class="form-column">
+          <!-- <div class="form-group">
+            <label for="appointmentId">Appointment ID</label>
+            <input type="text" id="prtId" value="AP#00001" class="form-input"/>
+          </div> -->
+          <div class="form-group">
+            <label for="ownerName">Owner Name</label>
+            <input type="text" id="ownerName" placeholder="Enter Owner's Name" class="form-input" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="petId">Pet ID</label>
+              <input type="text" id="petId" value="P0001"  class="form-input"/>
+            </div>
+            <div class="form-group" style="width: 150px;">
+              <label for="categoryType">Category Type</label>
+              <select id="categoryType"class="form-select">
+                <option value="A">Category A</option>
+                <option value="B">Category B</option>
+                <option value="C">Category C</option>
+                <option value="D">Category D</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group" style="width: 150px;">
+              <label for="petType">Pet Type</label>
+              <select id="petType" class="form-select">
+                <option value="Dog">Dog</option>
+                <option value="Cat">Cat</option>
+                <option value="Birds">Birds</option>
+                <option value="Rabbit">Rabbit</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="petName">Pet Name</label>
+              <input type="text" id="petName" placeholder="Enter Pet's Name" class="form-input"/>
+            </div>
+          </div>
+        </div>
+        <div class="form-column">
+          <div class="form-group">
+            <label for="mobileNumber">Mobile Number</label>
+            <input type="tel" id="mobileNumber" placeholder="Mobile Number" class="form-input" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter Email" class="form-input"  />
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" placeholder="Description" class="form-textarea"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="appointmentDate">Appointment Date</label>
+          <input type="date" id="appointmentDate" class="form-input"/>
+        </div>
+        <div class="form-group">
+          <label for="appointmentTime">Appointment Time</label>
+          <input type="time" id="appointmentTime" class="form-input"/>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Add Appointment</button>
+        <button type="reset" class="btn btn-secondary">Clear</button>
+      </div>
+    </form>
+  </main>
+
