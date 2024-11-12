@@ -4,6 +4,7 @@ import { LandingpageComponent } from "./auth/components/landingpage/landingpage.
 import { FormsModule } from '@angular/forms';
 import { SignupComponent } from './auth/components/signup/signup.component';
 import { LoginComponent } from './auth/components/login/login.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-root',

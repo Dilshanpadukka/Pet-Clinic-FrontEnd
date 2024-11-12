@@ -12,14 +12,14 @@
     </nav>
     <div class="user-profile">
       <div class="user-info">
-        <p class="user-name">Udayanka Dilshan</p>
+        <p class="user-name">{{userName}}</p>
         <p class="user-role"></p>
       </div>
-      <div class="user-avatar">U</div>
+      <div class="user-avatar">{{userId}}</div>
     </div>
   </header>
   <div>
-    <a class="appoinment-button" style="margin-top: 130px; margin-left: 80px;" routerLink="/app-pet">
+    <a class="appoinment-button" style="margin-top: 130px; margin-left: 80px;" routerLink="/add-pet">
         <div>
             <i class="bi bi-plus-circle-fill"></i>
         </div>
@@ -37,9 +37,9 @@
               <th>petName</th>
               <th>age</th>
               <th>gender</th>
-              <th>remarks</th>
               <th>petType</th>
-              <th>ownerId</th>
+              <th>Contact No</th>
+              <th>remarks</th>
               <th>Action</th>
           </tr>
       </thead>
@@ -50,10 +50,12 @@
               <td>{{pet.petName}}</td>
               <td>{{pet.age}}</td>
               <td>{{pet.gender}}</td>
-              <td>{{pet.remarks}}</td>
               <td>{{pet.petType}}</td>
-              <td>{{pet.ownerId}}</td>
-              <td><button class="btn btn-danger" (click)="deletePetById(pet.petId)"><i class="bi bi-trash-fill"></i></button></td>
+              <td>{{pet.ownerPhoneNumber}}</td>
+              <td>{{pet.remarks}}</td>
+              <td><button class="btn btn-danger" (click)="deletePetById(pet.petId)"><i class="bi bi-trash-fill"></i></button>
+                <button class="btn btn--success" (click)="deletePetById(pet.petId)"><i class="bi bi-pencil-square"></i></button>
+              </td>
           </tr>
       </tbody>
   </table>

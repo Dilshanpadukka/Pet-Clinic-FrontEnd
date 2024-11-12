@@ -39,6 +39,7 @@ export class LoginComponent {
       return;
     }
 
+    
     this.http.post("http://localhost:8081/api/auth/login", this.loginForm.value).subscribe({
       next: (res: any) => {
         if (res.user?.id) {
@@ -48,6 +49,9 @@ export class LoginComponent {
             text: 'Welcome to the admin dashboard!',
           });
           localStorage.setItem("pet-clinic-user", res.jwt);
+          localStorage.setItem("pet-clinic-user-id", res.user.id);
+          localStorage.setItem("pet-clinic-user-name", res.user.name);
+
           this.router.navigateByUrl('admin');
         } else {
           Swal.fire({

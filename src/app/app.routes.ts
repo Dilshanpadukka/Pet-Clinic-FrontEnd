@@ -7,6 +7,8 @@ import { LandingpageComponent } from './auth/components/landingpage/landingpage.
 import { AddPetComponent } from './modules/admin/components/add-pet/add-pet.component';
 import { AppointmentsComponent } from './modules/admin/components/appointments/appointments.component';
 import { AddAppointmentComponent } from './modules/admin/components/add-appointment/add-appointment.component';
+import { authGuard } from './auth/services/auth/guards/auth.guard';
+
 
 export const routes: Routes = [
     {
@@ -16,7 +18,6 @@ export const routes: Routes = [
     {
         path: 'register',
         component: SignupComponent
-
     },
     {
         path: 'login',
@@ -25,22 +26,26 @@ export const routes: Routes = [
     {
         path: 'admin',
         component: AdminDashboardComponent,
-        
+        canActivate: [authGuard] // Protecting admin dashboard
     },
     {
-        path: 'app-pet',
+        path: 'add-pet',
         component: AddPetComponent,
-        
-    },{
-        path: 'appointments',
-        component: AppointmentsComponent
+        canActivate: [authGuard] // Protecting add-pet
     },
     {
-        path: 'app-appointment',
-        component: AddAppointmentComponent
+        path: 'appointments',
+        component: AppointmentsComponent,
+        canActivate: [authGuard] // Protecting appointments
+    },
+    {
+        path: 'add-appointment',
+        component: AddAppointmentComponent,
+        canActivate: [authGuard] // Protecting add-appointment
     },
     {
         path: 'petowner',
-        component: PetownerDashboardComponent
+        component: PetownerDashboardComponent,
+        canActivate: [authGuard] // Protecting petowner dashboard
     }
 ];

@@ -11,7 +11,8 @@ interface Pet {
   gender: string;
   remarks: string;
   petType: string;
-  ownerId: string;
+  ownerPhoneNumber: string;
+  
 }
 
 @Component({
@@ -25,11 +26,15 @@ export class AdminDashboardComponent implements OnInit {
   petList: Pet[] = [];
   loading = false;
   error: string | null = null;
+  userId: string | null | undefined;
+  userName: string | null | undefined;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.getAllPets();
+    this.userId=localStorage.getItem("pet-clinic-user-id");
+    this.userName=localStorage.getItem("pet-clinic-user-name");
   }
 
   getAllPets() {
@@ -65,15 +70,16 @@ export class AdminDashboardComponent implements OnInit {
       cancelButtonText: 'No, cancel!',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.http.delete(`http://localhost:8081/api/pet/${petId}`)
+        this.http.delete(`http://localhost:8081/api/pet/pet-delete-by-id/${petId}`)
           .subscribe({
             next: () => {
-              this.getAllPets(); // Refresh the list after deletion
+              
               Swal.fire({
                 icon: 'success',
                 title: 'Deleted!',
                 text: 'Pet has been deleted.',
               });
+              this.getAllPets(); // Refresh the list after deletion
             },
             error: (error: HttpErrorResponse) => {
               console.error('Error deleting pet:', error);
@@ -87,4 +93,5 @@ export class AdminDashboardComponent implements OnInit {
       }
     });
   }
+  
 }
