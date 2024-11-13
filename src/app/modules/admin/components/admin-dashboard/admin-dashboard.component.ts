@@ -2,7 +2,9 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { Modal } from 'bootstrap';
 
 interface Pet {
   petId: string;
@@ -11,14 +13,16 @@ interface Pet {
   gender: string;
   remarks: string;
   petType: string;
+  ownerName: string;
   ownerPhoneNumber: string;
-  
+  ownerEmail: string;
+  ownerAddress: string;
 }
 
 @Component({
   selector: 'app-admin-dashboard',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, FormsModule],
   templateUrl: './admin-dashboard.component.html',
   styleUrls: ['./admin-dashboard.component.css']
 })
@@ -28,13 +32,58 @@ export class AdminDashboardComponent implements OnInit {
   error: string | null = null;
   userId: string | null | undefined;
   userName: string | null | undefined;
+  selectedPet: Pet = {
+    petId: '',
+    petName: '',
+    age: 0,
+    gender: '',
+    remarks: '',
+    petType: '',
+    ownerName: '',
+    ownerPhoneNumber: '',
+    ownerEmail: '',
+    ownerAddress: ''
+  };
+  private updateModal: Modal | null = null;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.getAllPets();
-    this.userId=localStorage.getItem("pet-clinic-user-id");
-    this.userName=localStorage.getItem("pet-clinic-user-name");
+    this.userId = localStorage.getItem("pet-clinic-user-id");
+    this.userName = localStorage.getItem("pet-clinic-user-name");
+  }
+
+  openUpdateModal(pet: Pet) {
+    this.selectedPet = { ...pet }; // Create a copy of the pet object
+    const modalElement = document.getElementById('updatePetModal');
+    if (modalElement) {
+      this.updateModal = new Modal(modalElement);
+      this.updateModal.show();
+    }
+  }
+
+  updatePet() {
+    this.http.put<{message: string}>('http://localhost:8081/api/pet/pet-update-by-id', this.selectedPet)
+      .subscribe({
+        next: (response) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Updated!',
+            text: response.message,
+          });
+          this.updateModal?.hide();
+          this.getAllPets();
+        },
+        error: (error: HttpErrorResponse) => {
+          console.error('Error updating pet:', error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Failed to update pet',
+            text: error.error.message || 'There was an issue updating the pet information.',
+          });
+        }
+      });
   }
 
   getAllPets() {
@@ -70,28 +119,26 @@ export class AdminDashboardComponent implements OnInit {
       cancelButtonText: 'No, cancel!',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.http.delete(`http://localhost:8081/api/pet/pet-delete-by-id/${petId}`)
+        this.http.delete<{message: string}>(`http://localhost:8081/api/pet/pet-delete-by-id/${petId}`)
           .subscribe({
-            next: () => {
-              
+            next: (response) => {
               Swal.fire({
                 icon: 'success',
                 title: 'Deleted!',
-                text: 'Pet has been deleted.',
+                text: response.message,
               });
-              this.getAllPets(); // Refresh the list after deletion
+              this.getAllPets();
             },
             error: (error: HttpErrorResponse) => {
               console.error('Error deleting pet:', error);
               Swal.fire({
                 icon: 'error',
                 title: 'Failed to delete pet',
-                text: 'There was an issue deleting the pet. Please try again.',
+                text: error.error.message || 'There was an issue deleting the pet.',
               });
             }
           });
       }
     });
-  }
-  
+}
 }
