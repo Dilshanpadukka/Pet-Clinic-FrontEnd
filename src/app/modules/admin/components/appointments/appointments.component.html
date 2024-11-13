@@ -1,116 +1,143 @@
 <header class="header fixed-top">
-    <img src="https://cdn.builder.io/api/v1/image/assets/6bde1fe88380450c8315d7462734696d/94e06064140b2075909ddb822b84e8dfb28d8d3316c2d29b77dfde3fe0f5c9b8?apiKey=6bde1fe88380450c8315d7462734696d&" alt="Logo" class="logo" />
-    <nav class="navigation">
-      <ul class="nav-list">
-        <li class="nav-item">DashBoard</li>
-        <li class="nav-item active">Appointment</li>
-        <li class="nav-item" routerLink="/admin">Pets</li>
-        <li class="nav-item">Veterians</li>
-        <li class="nav-item">Reports</li>
-        <li class="nav-item">Help Center</li>
-      </ul>
-    </nav>
-    <div class="user-profile">
-      <div class="user-info">
-        <p class="user-name">Udayanka Dilshan</p>
-        <p class="user-role"></p>
-      </div>
-      <div class="user-avatar">U</div>
+  <img src="https://cdn.builder.io/api/v1/image/assets/6bde1fe88380450c8315d7462734696d/94e06064140b2075909ddb822b84e8dfb28d8d3316c2d29b77dfde3fe0f5c9b8?apiKey=6bde1fe88380450c8315d7462734696d&" alt="Logo" class="logo" />
+  <nav class="navigation">
+    <ul class="nav-list">
+      <li class="nav-item">DashBoard</li>
+      <li class="nav-item active">Appointment</li>
+      <li class="nav-item" routerLink="/admin">Pets</li>
+      <li class="nav-item">Veterians</li>
+      <li class="nav-item">Reports</li>
+      <li class="nav-item">Help Center</li>
+    </ul>
+  </nav>
+  <div class="user-profile">
+    <div class="user-info">
+      <p class="user-name">Udayanka Dilshan</p>
     </div>
-  </header>
-  <div>
-    <a class="appoinment-button" style="margin-top: 130px; margin-left: 80px;" routerLink="/add-appointment">
-        <div>
-            <i class="bi bi-plus-circle-fill"></i>
-        </div>
-        <div>
-            <span class="visually-hidden">Add Appoinment</span>
-        </div><h5>Add Appoinment</h5>
-    </a>
+    <div class="user-avatar">U</div>
+  </div>
+</header>
+
+<div>
+  <a class="appoinment-button" style="margin-top: 130px; margin-left: 80px;" routerLink="/add-appointment">
+    <div>
+      <i class="bi bi-plus-circle-fill"></i>
+    </div>
+    <div>
+      <span class="visually-hidden">Add Appointment</span>
+    </div>
+    <h5>Add Appointment</h5>
+  </a>
 </div>
-  <div class="container" style="margin-top: 20px">
-      <table class="table table-bordered table-hover">
-      <thead>
-          <tr>
-              <th>No</th>
-              <th>Appointment ID</th>
-              <th>Pet ID</th>
-              <th>Description</th>
-              <th>Date</th>
-              <th>Time</th>
-              <th>CategoryId</th>
-              <th>petName</th>
-              <th>petType</th>
-          </tr>
-      </thead>
-      <!-- <tbody>
-          <tr *ngFor="let appointment of appointments; index as i">
-              <td>{{i+1}}</td>
-              <td>{{appointment.appointmentId}}</td>
-              <td>{{appointment.petId}}</td>
-              <td>{{appointment.description}}</td>
-              <td>{{appointment.date}}</td>
-              <td>{{appointment.time}}</td>
-              <td>{{appointment.categoryId}}</td>
-              <td>{{appointment.petName}}</td>
-              <td>{{appointment.petType}}</td>
-              
-          </tr>
-      </tbody> -->
+
+<div class="container" style="margin-top: 20px">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Appointment ID</th>
+        <th>Pet ID</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>CategoryId</th>
+        <th>Pet Name</th>
+        <th>Pet Type</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let appointment of appointmentList; index as i">
+        <td>{{ i + 1 }}</td>
+        <td>{{ appointment.appointmentId }}</td>
+        <td>{{ appointment.petId }}</td>
+        <td>{{ appointment.description }}</td>
+        <td>{{ appointment.date }}</td>
+        <td>{{ appointment.time }}</td>
+        <td>{{ appointment.categoryId }}</td>
+        <td>{{ appointment.petName }}</td>
+        <td>{{ appointment.petType }}</td>
+        <td>
+          <button class="btn btn-danger" (click)="deleteAppointmentById(appointment.appointmentId)">
+            <i class="bi bi-trash-fill"></i>
+        </button>
+          <button class="btn btn-primary btn-sm" (click)="openUpdateModal(appointment)"><i class="bi bi-pencil-square"></i></button>
+        </td>
+      </tr>
+    </tbody>
   </table>
-  </div>
-  
-  <!-- <div class="container">
-      <table class="table table-bordered table-hover">
-          <tr>
-              <th>Count</th>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Address</th>
-              <th>Email</th>
-          </tr>
-          <tr *ngFor="let customer of customerList; index as i">
-              <td>{{i+1}}</td>
-              <td>{{customer.id}}</td>
-              <td>{{customer.name}}</td>
-              <td>{{customer.address}}</td>
-              <td>{{customer.email}}</td>
-              <td><button class="btn btn-danger" (click)="deleteCustomerById(customer.id)"><i class="bi bi-trash-fill"></i></button></td>
-              <td><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="updateCustomer(customer)" ><i class="bi bi-pencil-square"></i></button></td>
-          </tr>
-      </table>
-  </div>
-  
-  
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Update Customer</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+
+<!-- Update Modal -->
+<div class="modal fade" id="updatePetModal" tabindex="-1" aria-labelledby="updatePetModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updatePetModalLabel">Update Appointment</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="petId" class="form-label">Appointment ID</label>
+            <input type="text" id="appointmentId"class="form-control" [value]="selectetAppointment.appointmentId" disabled />
+          </div>
+          <div class="mb-3">
+            <label for="petId" class="form-label">Pet ID</label>
+            <input type="text" id="petId" class="form-control" [value]="selectetAppointment.petId" disabled />
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Pet Name</label>
+            <input type="text" id="petName" class="form-control" [(ngModel)]="selectetAppointment.petName" name="petName" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Category</label>
+            <select class="form-select" [(ngModel)]="selectetAppointment.categoryId" name="categoryId" required>
+              <option value="A">Category A</option>
+              <option value="B">Category B</option>
+              <option value="C">Category C</option>
+              <option value="D">Category D</option>
+            </select>
         </div>
-        <div class="modal-body">
-            <div class="mb-3">
-              <label for="recipient-name" class="col-form-label">ID</label>
-              <input type="text" class="form-control" [(ngModel)]="customerTemp.id" id="recipient-name" disabled="true">
-            </div>
-            <div class="mb-3">
-              <label for="recipient-name" class="col-form-label">Name</label>
-              <input type="text" class="form-control" [(ngModel)]="customerTemp.name" id="recipient-name">
-            </div>
-            <div class="mb-3">
-              <label for="recipient-name" class="col-form-label">Address</label>
-              <input type="text" class="form-control" [(ngModel)]="customerTemp.address" id="recipient-name">
-            </div>
-            <div class="mb-3">
-              <label for="recipient-name" class="col-form-label">Email</label>
-              <input type="text" class="form-control" [(ngModel)]="customerTemp.email" id="recipient-name">
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" (click)="saveCustomer()" data-bs-dismiss="modal">Update Customer</button>
-        </div>
+        <div class="mb-3">
+          <label class="form-label">Pet Type</label>
+          <select class="form-select" [(ngModel)]="selectetAppointment.petType" name="petType" required>
+            <option value="Dog">Dog</option>
+            <option value="Cat">Cat</option>
+            <option value="Birds">Birds</option>
+            <option value="Rabbit">Rabbit</option>
+          </select>
+      </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <input type="text" id="description" class="form-control" [(ngModel)]="selectetAppointment.description" name="description" />
+          </div>
+          <div class="mb-3">
+            <label for="date" class="form-label">Date</label>
+            <input type="date" id="date" class="form-control" [(ngModel)]="selectetAppointment.date" name="date" />
+          </div>
+          <div class="mb-3">
+            <label for="time" class="form-label">Time</label>
+            <input type="time" id="time" class="form-control" [(ngModel)]="selectetAppointment.time" name="time" />
+          </div>
+          <div class="mb-3">
+            <label for="ownerName" class="form-label">Owner Name</label>
+            <input type="text" id="ownerName" class="form-control" [(ngModel)]="selectetAppointment.ownerName" name="ownerName" />
+          </div>
+          <div class="mb-3">
+            <label for="phoneNumber" class="form-label">Phone Number</label>
+            <input type="tel" id="phoneNumber" class="form-control" [(ngModel)]="selectetAppointment.phoneNumber" name="phoneNumber" />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" class="form-control" [(ngModel)]="selectetAppointment.email" name="email" />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="updatePet()">Save changes</button>
       </div>
     </div>
-  </div> -->
+  </div>
+</div>
