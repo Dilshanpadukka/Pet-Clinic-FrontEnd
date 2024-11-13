@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators, FormsModule, ReactiveFormsModule } 
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 import Swal from 'sweetalert2';
+import { StorageService } from '../../services/storage/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +22,7 @@ export class LoginComponent {
   router = inject(Router);
   formBuilder = inject(FormBuilder);
 
+ 
   constructor() {
     // Initialize the form with validation rules
     this.loginForm = this.formBuilder.group({
@@ -48,11 +50,20 @@ export class LoginComponent {
             title: 'Login Successful',
             text: 'Welcome to the admin dashboard!',
           });
-          localStorage.setItem("pet-clinic-user", res.jwt);
-          localStorage.setItem("pet-clinic-user-id", res.user.id);
-          localStorage.setItem("pet-clinic-user-name", res.user.name);
-
+          console.log(res);
+          
+          // localStorage.setItem("pet-clinic", res);
+          
+          // localStorage.setItem("pet-clinic-user", res.jwt);
+          // localStorage.setItem("pet-clinic-user-id", res.user.id);
+          // localStorage.setItem("pet-clinic-user-name", res.user.name);
+          // localStorage.setItem("pet-clinic-user-role", res.user.userRole);
+          StorageService.saveToken(res.jwt);
+          StorageService.saveUser(res.user);
           this.router.navigateByUrl('admin');
+        
+          
+          
         } else {
           Swal.fire({
             icon: 'error',
@@ -70,4 +81,6 @@ export class LoginComponent {
       }
     });
   }
+  
+ 
 }

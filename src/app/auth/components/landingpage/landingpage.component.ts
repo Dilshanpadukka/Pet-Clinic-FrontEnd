@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -8,6 +8,9 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   templateUrl: './landingpage.component.html',
   styleUrl: './landingpage.component.css'
 })
-export class LandingpageComponent {
+export class LandingpageComponent implements OnInit{
+  ngOnInit(): void {
+    localStorage.clear();
+  }
 
 }

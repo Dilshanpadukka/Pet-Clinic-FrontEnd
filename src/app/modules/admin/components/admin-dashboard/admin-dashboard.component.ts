@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Modal } from 'bootstrap';
@@ -49,9 +49,11 @@ export class AdminDashboardComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+    console.log("Hello");
     this.getAllPets();
     this.userId = localStorage.getItem("pet-clinic-user-id");
     this.userName = localStorage.getItem("pet-clinic-user-name");
+    
   }
 
   openUpdateModal(pet: Pet) {
@@ -128,6 +130,7 @@ export class AdminDashboardComponent implements OnInit {
                 text: response.message,
               });
               this.getAllPets();
+              
             },
             error: (error: HttpErrorResponse) => {
               console.error('Error deleting pet:', error);
@@ -141,4 +144,5 @@ export class AdminDashboardComponent implements OnInit {
       }
     });
 }
+
 }

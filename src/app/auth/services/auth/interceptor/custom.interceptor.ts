@@ -1,7 +1,7 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 
 export const customInterceptor: HttpInterceptorFn = (req, next) => {
-  const token = localStorage.getItem('pet-clinic-user');
+  const token = localStorage.getItem('pet-clinic-userToken');
   const PUBLIC_ENDPOINTS = ['/auth/login', '/auth/signup'];
   const isPublicEndpoint = PUBLIC_ENDPOINTS.some(endpoint => req.url.includes(endpoint));
 

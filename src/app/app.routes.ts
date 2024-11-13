@@ -8,6 +8,8 @@ import { AddPetComponent } from './modules/admin/components/add-pet/add-pet.comp
 import { AppointmentsComponent } from './modules/admin/components/appointments/appointments.component';
 import { AddAppointmentComponent } from './modules/admin/components/add-appointment/add-appointment.component';
 import { authGuard } from './auth/services/auth/guards/auth.guard';
+import { ReportUploadComponent } from './modules/admin/components/report-upload/report-upload.component';
+import { ReportListComponent } from './modules/admin/components/report-list/report-list.component';
 
 
 export const routes: Routes = [
@@ -47,5 +49,13 @@ export const routes: Routes = [
         path: 'petowner',
         component: PetownerDashboardComponent,
         canActivate: [authGuard] // Protecting petowner dashboard
+    },
+    {
+        path:'upload-report',
+        component: ReportUploadComponent
+    },
+    {
+        path: 'report-list',
+        component: ReportListComponent
     }
 ];
