@@ -46,14 +46,112 @@ export class AppointmentsComponent implements OnInit {
     email: ''
   };
 
+  currentMonth: Date = new Date();
+  selectedDate: Date | null = null;
+  calendarDays: any[] = [];
+  weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  dayAppointments: Appointment[] = [];
+  upcomingAppointments: Appointment[] = [];
+
   private updateModal: Modal | null = null;
+  private calendarModal: Modal | null = null;
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     this.getAllAppointments();
+    this.generateCalendarDays();
+    this.filterUpcomingAppointments();
+  }
+  openCalendarModal() {
+    const modalElement = document.getElementById('calendarModal');
+    if (modalElement) {
+      this.calendarModal = new Modal(modalElement);
+      this.calendarModal.show();
+    }
   }
 
+  generateCalendarDays() {
+    const firstDay = new Date(this.currentMonth.getFullYear(), this.currentMonth.getMonth(), 1);
+    const lastDay = new Date(this.currentMonth.getFullYear(), this.currentMonth.getMonth() + 1, 0);
+    
+    const days = [];
+    let currentDate = new Date(firstDay);
+
+    while (currentDate.getDay() !== 0) {
+      currentDate.setDate(currentDate.getDate() - 1);
+      days.unshift({
+        date: new Date(currentDate),
+        isCurrentMonth: false,
+        appointments: this.getAppointmentsForDate(currentDate)
+      });
+    }
+
+    currentDate = new Date(firstDay);
+    while (currentDate <= lastDay) {
+      days.push({
+        date: new Date(currentDate),
+        isCurrentMonth: true,
+        appointments: this.getAppointmentsForDate(currentDate)
+      });
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+
+    currentDate = new Date(lastDay);
+    while (currentDate.getDay() !== 6) {
+      currentDate.setDate(currentDate.getDate() + 1);
+      days.push({
+        date: new Date(currentDate),
+        isCurrentMonth: false,
+        appointments: this.getAppointmentsForDate(currentDate)
+      });
+    }
+
+    this.calendarDays = days;
+  }
+
+  getAppointmentsForDate(date: Date): Appointment[] {
+    return this.appointmentList.filter(appointment => {
+      const appointmentDate = new Date(appointment.date);
+      return appointmentDate.toDateString() === date.toDateString();
+    });
+  }
+
+  selectDate(day: any) {
+    this.selectedDate = day.date;
+    this.dayAppointments = day.appointments;
+  }
+
+  previousMonth() {
+    this.currentMonth = new Date(
+      this.currentMonth.getFullYear(),
+      this.currentMonth.getMonth() - 1,
+      1
+    );
+    this.generateCalendarDays();
+  }
+  nextMonth() {
+    this.currentMonth = new Date(
+      this.currentMonth.getFullYear(),
+      this.currentMonth.getMonth() + 1,
+      1
+    );
+    this.generateCalendarDays();
+  }
+
+  filterUpcomingAppointments(): void {
+    const currentDate = new Date();
+    this.upcomingAppointments = this.appointmentList
+      .filter(appointment => {
+        const appointmentDate = new Date(appointment.date);
+        return appointmentDate >= currentDate; 
+      })
+      .sort((a, b) => {
+        const dateA = new Date(a.date + 'T' + a.time).getTime();
+        const dateB = new Date(b.date + 'T' + b.time).getTime();
+        return dateA - dateB; 
+      });
+  }
   getAllAppointments() {
     this.loading = true;
     this.error = null;
@@ -63,6 +161,8 @@ export class AppointmentsComponent implements OnInit {
         next: (response: any) => {
           if (Array.isArray(response)) {
             this.appointmentList = response;
+            this.generateCalendarDays();
+            this.filterUpcomingAppointments();
           } else {
             console.error('Unexpected response structure:', response);
             this.error = 'Invalid data format received from server';
@@ -78,7 +178,7 @@ export class AppointmentsComponent implements OnInit {
   }
 
   openUpdateModal(appointment: Appointment) {
-    this.selectetAppointment = { ...appointment }; // Create a copy of the appointment object
+    this.selectetAppointment = { ...appointment }; 
     const modalElement = document.getElementById('updatePetModal');
     if (modalElement) {
       this.updateModal = new Modal(modalElement);
@@ -86,7 +186,7 @@ export class AppointmentsComponent implements OnInit {
     }
   }
 
-  updatePet() {
+  updateAppointment() {
     // Format the date to 'yyyy-MM-dd'
     const formattedDate = this.selectetAppointment.date
       ? formatDate(this.selectetAppointment.date, 'yyyy-MM-dd', 'en-US')

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReportService {
-  private baseUrl = 'http://localhost:8081/api/report';
+  private baseUrl = 'http://localhost:8081/api';
 
   constructor(private http: HttpClient) {}
 
@@ -15,14 +15,17 @@ export class ReportService {
     formData.append('note', note);
     formData.append('report', reportFile);
 
-    return this.http.post(`${this.baseUrl}/add`, formData, { responseType: 'text' });
+    return this.http.post(`${this.baseUrl}/report/add`, formData, { responseType: 'text' });
   }
 
-  downloadReport(fileName: string): Observable<Blob> {
-    return this.http.get(`${this.baseUrl}/download/${fileName}`, { responseType: 'blob' });
+  downloadReport(reportLink: string): Observable<Blob> {
+    const url = `${this.baseUrl}/${reportLink.startsWith('/') ? reportLink.slice(1) : reportLink}`;
+    console.log(url);
+    return this.http.get(url, { responseType: 'blob' });
   }
+  
 
   getAllReports(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/all`);
+    return this.http.get(`${this.baseUrl}/report/all`);
   }
 }

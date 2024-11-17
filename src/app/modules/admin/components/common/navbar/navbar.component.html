@@ -1,28 +1,28 @@
 <header class="header fixed-top">
-    <img src="https://cdn.builder.io/api/v1/image/assets/6bde1fe88380450c8315d7462734696d/94e06064140b2075909ddb822b84e8dfb28d8d3316c2d29b77dfde3fe0f5c9b8?apiKey=6bde1fe88380450c8315d7462734696d&" 
-         alt="Logo" 
-         class="logo">
-    <nav class="navigation">
-      <ul class="nav-list">
-        <li class="nav-item" routerLink="/dashboard" routerLinkActive="active">Dashboard</li>
-        <li class="nav-item" routerLink="/appointments" routerLinkActive="active">Appointment</li>
-        <li class="nav-item" routerLink="/admin" routerLinkActive="active">Pets</li>
-        <li class="nav-item" routerLink="/veterinarians" routerLinkActive="active">Veterinarians</li>
-        <li class="nav-item" routerLink="/upload-report" routerLinkActive="active">Reports</li>
-        <li class="nav-item" routerLink="/report-list" routerLinkActive="active">View Reports</li>
-      </ul>
-    </nav>
-    <div class="user-profile">
-      <div class="user-info">
-        <p class="user-name">{{userName}}</p>
-      </div>
-      <div class="dropdown">
-        <div class="user-avatar" (click)="toggleDropdown()">{{userId}}</div>
-        <div class="dropdown-menu dropdown-menu-end" [class.show]="isDropdownOpen">
-          <button class="dropdown-item" (click)="logout()">
-            <i class="bi bi-box-arrow-right"></i> Logout
-          </button>
-        </div>
+  <img src="https://cdn.builder.io/api/v1/image/assets/6bde1fe88380450c8315d7462734696d/94e06064140b2075909ddb822b84e8dfb28d8d3316c2d29b77dfde3fe0f5c9b8?apiKey=6bde1fe88380450c8315d7462734696d&" 
+       alt="Logo" 
+       class="logo">
+  <nav class="navigation">
+    <ul class="nav-list">
+      <li class="nav-item" routerLink="/admin" routerLinkActive="active">Dashboard</li>
+      <li class="nav-item" routerLink="/appointments" routerLinkActive="active">Appointment</li>
+      <li class="nav-item" routerLink="/pets" routerLinkActive="active">Pets</li>
+      <li class="nav-item" routerLink="/veterinarians" routerLinkActive="active">Veterinarians</li>
+      <li class="nav-item" routerLink="/upload-report" routerLinkActive="active">Reports</li>
+      <li class="nav-item" routerLink="/report-list" routerLinkActive="active">View Reports</li>
+    </ul>
+  </nav>
+  <div class="user-profile">
+    <div class="user-info">
+      <p class="user-name">{{userName}}</p>
+    </div>
+    <div class="dropdown">
+      <div class="user-avatar" (click)="toggleDropdown()">{{userId}}</div>
+      <div class="dropdown-menu dropdown-menu-end" [class.show]="isDropdownOpen">
+        <button class="dropdown-item" (click)="logout()">
+          <i class="bi bi-box-arrow-right"></i> Logout
+        </button>
       </div>
     </div>
-  </header>
+  </div>
+</header>

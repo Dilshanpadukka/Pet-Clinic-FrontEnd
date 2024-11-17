@@ -63,7 +63,7 @@ export class AddPetComponent {
           title: 'New Pet Added!',
           text: 'The Pet has been successfully added.',
         }).then(() => {
-          this.router.navigate(['/admin']);  // Navigate to the pets list
+          this.router.navigate(['/pets']);  // Navigate to the pets list
         });
       },
       error: () => {

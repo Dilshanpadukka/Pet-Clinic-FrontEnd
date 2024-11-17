@@ -10,6 +10,7 @@ import { AddAppointmentComponent } from './modules/admin/components/add-appointm
 import { authGuard } from './auth/services/auth/guards/auth.guard';
 import { ReportUploadComponent } from './modules/admin/components/report-upload/report-upload.component';
 import { ReportListComponent } from './modules/admin/components/report-list/report-list.component';
+import { PetsComponent } from './modules/admin/components/pets/pets.component';
 
 
 export const routes: Routes = [
@@ -57,5 +58,9 @@ export const routes: Routes = [
     {
         path: 'report-list',
         component: ReportListComponent
+    },
+    {
+        path: 'pets',
+        component: PetsComponent
     }
 ];
