@@ -1,126 +1,252 @@
-<app-navbar></app-navbar>
-<div class="p-4" style="margin-top: 100px;">
-    <div class="p-4">
-        <div class="grid grid-cols-3 gap-4 mb-4">
-            <div class="flex items-center justify-center h-24 rounded">
-                <div class="container">
+<div class="p-4 bg-gray-50" style="margin-top: 100px;">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+        <!-- Revenue -->
+        <div class="rounded-lg shadow p-4 clock-box">
+            
+                
                       <div class="clock-container">
                         <div class="time text-4xl font-bold">{{currentTime}}</div>
                         <div class="date text-gray-600 dark:text-gray-300 mt-2">{{currentDate}}</div>
                       </div>
-                  </div>
+                  
+            
+        </div>
+        <!-- Total Patients Card -->
+        <div class="bg-white rounded-lg shadow p-4">
+            <div class="flex flex-col">
+                <div class="text-sm font-medium text-gray-500">Total Patients</div>
+                <div class="text-2xl font-bold text-blue-600">2,543</div>
+                <div class="text-xs text-green-500 mt-2">
+                    <span class="font-bold">↑ 12.5%</span> vs last month
+                </div>
             </div>
-            <div class="flex items-center justify-center h-24 rounded">
-                    <div class="flex flex-col px-36 py-2 bg-white shadow rounded-lg overflow-hidden">
-                        <div class="flex flex-col items-center space-y-2">
-                            <div class="text-6xl font-bold tracking-tight leading-none text-lime-500">100+</div>
-                            <div class="text-lg font-medium text-blue-500">Total Pets</div>
+        </div>
+
+        <!-- Today's Appointments -->
+        <div class="bg-white rounded-lg shadow p-4">
+            <div class="flex flex-col">
+                <div class="text-sm font-medium text-gray-500">Today's Appointments</div>
+                <div class="text-2xl font-bold text-purple-600">24</div>
+                <div class="text-xs text-gray-500 mt-2">8 completed</div>
+            </div>
+        </div>
+
+        <!-- Available Doctors -->
+        <div class="bg-white rounded-lg shadow p-4">
+            <div class="flex flex-col">
+                <div class="text-sm font-medium text-gray-500">Available Vets</div>
+                <div class="text-2xl font-bold text-green-600">6</div>
+                <div class="text-xs text-gray-500 mt-2">2 on call</div>
+            </div>
+        </div>
+
+        
+    </div>
+
+    <!-- Recent Appointments -->
+    <div class="bg-white rounded-lg shadow mb-4">
+        <div class="p-4 border-b">
+            <h2 class="text-lg font-semibold text-gray-800">Recent Appointments</h2>
+        </div>
+        <div class="p-4">
+            <table class="w-full">
+                <thead>
+                    <tr class="text-left text-sm font-medium text-gray-500">
+                        <th class="pb-3">Pet Name</th>
+                        <th class="pb-3">Owner</th>
+                        <th class="pb-3">Service</th>
+                        <th class="pb-3">Date</th>
+                        <th class="pb-3">Status</th>
+                    </tr>
+                </thead>
+                <tbody class="text-sm">
+                    <tr class="border-t">
+                        <td class="py-3">Max</td>
+                        <td>John Doe</td>
+                        <td>Vaccination</td>
+                        <td>Nov 19, 2024</td>
+                        <td><span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Completed</span></td>
+                    </tr>
+                    <tr class="border-t">
+                        <td class="py-3">Luna</td>
+                        <td>Sarah Smith</td>
+                        <td>Regular Checkup</td>
+                        <td>Nov 19, 2024</td>
+                        <td><span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs">Pending</span></td>
+                    </tr>
+                    <tr class="border-t">
+                        <td class="py-3">Charlie</td>
+                        <td>Mike Johnson</td>
+                        <td>Surgery</td>
+                        <td>Nov 19, 2024</td>
+                        <td><span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">In Progress</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Popular Services -->
+        <div class="bg-white rounded-lg shadow">
+            
+                <!-- Previous dashboard components remain the same -->
+                
+                <!-- Smart Chat Section -->
+                <div class="mt-4 bg-white rounded-lg shadow">
+                    <div class="p-4 border-b flex justify-between items-center">
+                        <h2 class="text-lg font-semibold text-gray-800">Recent Communications</h2>
+                        <button class="text-blue-600 hover:text-blue-700 text-sm">View all</button>
+                    </div>
+                    <div class="p-4">
+                        <div class="space-y-4">
+                            <!-- Chat Message 1 -->
+                            <div class="flex gap-4">
+                                <div class="flex-shrink-0">
+                                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                                        <span class="text-blue-600 font-semibold">DR</span>
+                                    </div>
+                                </div>
+                                <div class="flex-grow">
+                                    <div class="flex items-center gap-2">
+                                        <h4 class="font-medium text-gray-900">Dr. Rachel Smith</h4>
+                                        <span class="text-sm text-gray-500">10:30 AM</span>
+                                    </div>
+                                    <div class="mt-1 text-sm text-gray-600">
+                                        Appointment reminder: Max's vaccination follow-up is scheduled for tomorrow at 2 PM. Please ensure to bring previous vaccination records.
+                                    </div>
+                                    <div class="mt-2 flex gap-2">
+                                        <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded-full text-xs">Vaccination</span>
+                                        <span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs">Follow-up</span>
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <!-- Chat Message 2 -->
+                            <div class="flex gap-4">
+                                <div class="flex-shrink-0">
+                                    <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+                                        <span class="text-green-600 font-semibold">JS</span>
+                                    </div>
+                                </div>
+                                <div class="flex-grow">
+                                    <div class="flex items-center gap-2">
+                                        <h4 class="font-medium text-gray-900">John Smith</h4>
+                                        <span class="text-sm text-gray-500">9:15 AM</span>
+                                    </div>
+                                    <div class="mt-1 text-sm text-gray-600">
+                                        Thank you for the great service! Luna is feeling much better after the treatment. Will schedule next checkup soon.
+                                    </div>
+                                    <div class="mt-2 flex gap-2">
+                                        <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded-full text-xs">Feedback</span>
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <!-- Chat Input -->
+                            <div class="mt-4 border-t pt-4">
+                                <div class="flex gap-4">
+                                    <div class="flex-shrink-0">
+                                        <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
+                                            <span class="text-gray-600 font-semibold">ME</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow">
+                                        <div class="flex gap-2">
+                                            <input type="text" 
+                                                   placeholder="Type your message..." 
+                                                   class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                                                Send
+                                            </button>
+                                        </div>
+                                        <div class="mt-2 flex gap-2">
+                                            <button class="px-2 py-1 text-sm text-gray-600 hover:bg-gray-100 rounded-full transition-colors">
+                                                Attach File
+                                            </button>
+                                            <button class="px-2 py-1 text-sm text-gray-600 hover:bg-gray-100 rounded-full transition-colors">
+                                                Schedule Meeting
+                                            </button>
+                                            <button class="px-2 py-1 text-sm text-gray-600 hover:bg-gray-100 rounded-full transition-colors">
+                                                Quick Reply
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-            </div>
-            <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 1v16M1 9h16" />
-                    </svg>
-                </p>
-            </div>
+            
+                    <!-- Quick Actions -->
+                    <div class="p-4 bg-gray-50 rounded-b-lg">
+                        <div class="flex gap-2">
+                            <button class="px-3 py-1 text-sm bg-white border rounded-full hover:bg-gray-50">
+                                📅 Schedule Appointment
+                            </button>
+                            <button class="px-3 py-1 text-sm bg-white border rounded-full hover:bg-gray-50">
+                                📋 View Records
+                            </button>
+                            <button class="px-3 py-1 text-sm bg-white border rounded-full hover:bg-gray-50">
+                                💊 Prescriptions
+                            </button>
+                            <button class="px-3 py-1 text-sm bg-white border rounded-full hover:bg-gray-50">
+                                ❓ Help
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            
         </div>
-        <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-                <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 18 18">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 1v16M1 9h16" />
-                </svg>
-            </p>
-        </div>
-        <div class="grid grid-cols-2 gap-4 mb-4">
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 1v16M1 9h16" />
-                    </svg>
-                </p>
+
+        <!-- Pet Types -->
+        <div class="bg-white rounded-lg shadow">
+            <div class="p-4 border-b">
+                <h2 class="text-lg font-semibold text-gray-800">Pet Distribution</h2>
             </div>
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 1v16M1 9h16" />
-                    </svg>
-                </p>
+            <div class="p-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="text-center p-4 bg-blue-50 rounded-lg">
+                        <div class="text-2xl font-bold text-blue-600">45%</div>
+                        <div class="text-sm text-gray-600">Dogs</div>
+                    </div>
+                    <div class="text-center p-4 bg-green-50 rounded-lg">
+                        <div class="text-2xl font-bold text-green-600">35%</div>
+                        <div class="text-sm text-gray-600">Cats</div>
+                    </div>
+                    <div class="text-center p-4 bg-yellow-50 rounded-lg">
+                        <div class="text-2xl font-bold text-yellow-600">12%</div>
+                        <div class="text-sm text-gray-600">Birds</div>
+                    </div>
+                    <div class="text-center p-4 bg-purple-50 rounded-lg">
+                        <div class="text-2xl font-bold text-purple-600">8%</div>
+                        <div class="text-sm text-gray-600">Others</div>
+                    </div>
+                </div>
             </div>
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 1v16M1 9h16" />
-                    </svg>
-                </p>
+            <div class="p-4 border-b">
+                <h2 class="text-lg font-semibold text-gray-800">Popular Services</h2>
             </div>
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 1v16M1 9h16" />
-                    </svg>
-                </p>
-            </div>
-        </div>
-        <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-            <p class="text-2xl text-gray-400 dark:text-gray-500">
-                <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 18 18">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 1v16M1 9h16" />
-                </svg>
-            </p>
-        </div>
-        <div class="grid grid-cols-2 gap-4">
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 1v16M1 9h16" />
-                    </svg>
-                </p>
-            </div>
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 1v16M1 9h16" />
-                    </svg>
-                </p>
-            </div>
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 1v16M1 9h16" />
-                    </svg>
-                </p>
-            </div>
-            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                <p class="text-2xl text-gray-400 dark:text-gray-500">
-                    <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 18 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 1v16M1 9h16" />
-                    </svg>
-                </p>
-            </div>
+            <div class="p-4">
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-600">Vaccination</span>
+                        <div class="w-2/3 bg-gray-200 rounded-full h-2.5">
+                            <div class="bg-blue-600 h-2.5 rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-600">Grooming</span>
+                        <div class="w-2/3 bg-gray-200 rounded-full h-2.5">
+                            <div class="bg-blue-600 h-2.5 rounded-full" style="width: 65%"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-600">Dental Care</span>
+                        <div class="w-2/3 bg-gray-200 rounded-full h-2.5">
+                            <div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%"></div>
+                        </div>
+                    </div>
+                </div>
         </div>
     </div>
 </div>
