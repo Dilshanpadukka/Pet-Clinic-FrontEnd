@@ -1,0 +1,84 @@
+/* Matching the appointment form's theme and styling */
+.report-upload-container {
+    background-color: #7d8e9a;
+    height: 100vh;
+    display: flex;
+    padding-bottom: 80px;
+    flex-direction: column;
+    overflow: hidden;
+    align-items: center;
+    font-family: Poppins, sans-serif;
+}
+
+.report-upload-content {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    margin-top: 26px;
+    width: 100%;
+    max-width: 1072px;
+}
+
+.report-upload-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1074px;
+    margin-top: 130px;
+}
+
+.report-upload-title {
+    color: #010d02;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.report-upload-form .form-group {
+    margin-bottom: 20px;
+}
+
+.report-upload-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: rgba(0, 0, 0, 0.75);
+    font-weight: 500;
+}
+
+.report-upload-form .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e6ffe8;
+    border-radius: 10px;
+    background-color: #e6ffe8;
+    font-family: inherit;
+    font-size: 16px;
+}
+
+.report-upload-form .btn-primary {
+    background-color: #4eaf5a;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.report-upload-form .btn-primary:hover {
+    background-color: #3c8c48;
+}
+
+.report-upload-message {
+    margin-top: 15px;
+    color: #4eaf5a;
+    font-weight: 500;
+}
+
+@media (max-width: 991px) {
+    .report-upload-content {
+        padding: 20px;
+    }
+}

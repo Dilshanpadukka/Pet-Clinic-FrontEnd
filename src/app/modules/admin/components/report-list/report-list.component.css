@@ -1,0 +1,79 @@
+/* Report List Styling */
+.report-list-container {
+    background-color: #7d8e9a;
+    display: flex;
+    padding-bottom: 80px;
+    flex-direction: column;
+    overflow: hidden;
+    align-items: center;
+    font-family: Poppins, sans-serif;
+}
+
+.report-list-content {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    margin-top: 26px;
+    width: 100%;
+    max-width: 1072px;
+}
+
+.report-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1074px;
+    margin-top: 130px;
+}
+
+.report-list-title {
+    color: #010d02;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.report-list-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.report-list-table th {
+    background-color: #4eaf5a;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+.report-list-table td {
+    padding: 12px;
+    border-bottom: 1px solid #e6ffe8;
+}
+
+.report-list-table .btn-primary {
+    background-color: #4eaf5a;
+    color: #fff;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.report-list-table .btn-primary:hover {
+    background-color: #3c8c48;
+}
+
+@media (max-width: 991px) {
+    .report-list-content {
+        padding: 20px;
+    }
+    
+    .report-list-table {
+        font-size: 12px;
+    }
+}

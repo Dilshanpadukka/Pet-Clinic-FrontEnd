@@ -38,13 +38,11 @@ export class NavbarComponent implements OnInit {
   }
 
   logout(): void {
-    // Clear local storage
+    
     //localStorage.removeItem('pet-clinic-user');
     StorageService.logout();
     window.location.reload();
-    // Add any other logout logic here
     
-    // Navigate to login page
     this.isDropdownOpen = false;
  
     this.router.navigate(['/login']);

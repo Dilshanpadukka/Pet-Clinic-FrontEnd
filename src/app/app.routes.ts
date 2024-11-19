@@ -53,14 +53,17 @@ export const routes: Routes = [
     },
     {
         path:'upload-report',
-        component: ReportUploadComponent
+        component: ReportUploadComponent,
+        canActivate: [authGuard]
     },
     {
         path: 'report-list',
-        component: ReportListComponent
+        component: ReportListComponent,
+        canActivate: [authGuard]
     },
     {
         path: 'pets',
-        component: PetsComponent
+        component: PetsComponent,
+        canActivate: [authGuard]
     }
 ];
