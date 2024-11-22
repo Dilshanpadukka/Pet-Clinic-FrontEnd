@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { ReportService } from '../../services/report/report.service';
 import { FormsModule, NgModel } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { NavbarComponent } from "../common/navbar/navbar.component";
 
 
 @Component({
   selector: 'app-report-upload',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule, NavbarComponent],
   templateUrl: './report-upload.component.html',
   styleUrls: ['./report-upload.component.css']
 })

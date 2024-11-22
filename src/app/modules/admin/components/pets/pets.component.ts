@@ -5,6 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Modal } from 'bootstrap';
+import { NavbarComponent } from "../common/navbar/navbar.component";
 
 interface Pet {
   petId: string;
@@ -22,7 +23,7 @@ interface Pet {
 @Component({
   selector: 'app-pets',
   standalone: true,
-  imports: [CommonModule, RouterLink, FormsModule],
+  imports: [CommonModule, RouterLink, FormsModule, NavbarComponent],
   templateUrl: './pets.component.html',
   styleUrls: ['./pets.component.css']
 })

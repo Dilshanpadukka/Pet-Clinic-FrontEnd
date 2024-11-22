@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+<main class="appointment-form">
+    <section class="form-header">
+      <h1 class="page-title">Add Veterinarian</h1>
+      <div class="search-bar">
+        <img src="https://cdn.builder.io/api/v1/image/assets/6bde1fe88380450c8315d7462734696d/f1ff1f0b8ff72693564542bedd29a5fc5a5dcda089f97d6fc21e5b24f826e351?apiKey=6bde1fe88380450c8315d7462734696d&" alt="Search icon" class="search-icon" />
+        <input type="text" placeholder="Search" class="search-input" />
+      </div>
+    </section>
+
+    <form [formGroup]="vetForm" class="appointment-details">
+      <div class="form-columns">
+        <div class="form-column">
+          <div class="form-group">
+            <label for="vetName">Veterinarian Name</label>
+            <input type="text" id="vetName" formControlName="vetName" placeholder="Enter Vet's Name" class="form-input"/>
+          </div>
+          <div class="form-group">
+            <label for="regNo">Registration Number</label>
+            <input type="text" id="regNo" formControlName="regNo" placeholder="Enter Registration Number" class="form-input"/>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" formControlName="email" placeholder="Enter Email" class="form-input"/>
+          </div>
+        </div>
+
+        <div class="form-column">
+          <div class="form-group">
+            <label for="contactNumber">Contact Number</label>
+            <input type="tel" id="contactNumber" formControlName="contactNumber" placeholder="Enter Contact Number" class="form-input"/>
+          </div>
+          <div class="form-group">
+            <label for="profilePicture">Profile Picture</label>
+            <input type="file" id="profilePicture" (change)="onFileSelected($event)" accept="image/*" class="form-input"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary" (click)="onAddVet()">Add Veterinarian</button>
+        <button type="reset" class="btn btn-secondary">Clear</button>
+      </div>
+    </form>
+</main>

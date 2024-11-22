@@ -6,6 +6,7 @@ import { RouterLink } from '@angular/router';
 import { Modal } from 'bootstrap';
 import Swal from 'sweetalert2';
 import { formatDate } from '@angular/common';
+import { NavbarComponent } from '../common/navbar/navbar.component';
 
 interface Appointment {
   appointmentId: string;
@@ -24,7 +25,7 @@ interface Appointment {
 @Component({
   selector: 'app-appointments',
   standalone: true,
-  imports: [RouterLink, CommonModule, FormsModule],
+  imports: [RouterLink, CommonModule, FormsModule,NavbarComponent],
   templateUrl: './appointments.component.html',
   styleUrls: ['./appointments.component.css']
 })

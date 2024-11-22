@@ -11,6 +11,8 @@ import { authGuard } from './auth/services/auth/guards/auth.guard';
 import { ReportUploadComponent } from './modules/admin/components/report-upload/report-upload.component';
 import { ReportListComponent } from './modules/admin/components/report-list/report-list.component';
 import { PetsComponent } from './modules/admin/components/pets/pets.component';
+import { VetsComponent } from './modules/admin/components/vets/vets.component';
+import { AddVetsComponent } from './modules/admin/components/add-vets/add-vets.component';
 
 
 export const routes: Routes = [
@@ -64,6 +66,16 @@ export const routes: Routes = [
     {
         path: 'pets',
         component: PetsComponent,
+        canActivate: [authGuard]
+    },
+    {
+        path: 'veterinarians',
+        component: VetsComponent,
+        canActivate: [authGuard]
+    },
+    {
+        path: 'add-vet',
+        component: AddVetsComponent,
         canActivate: [authGuard]
     }
 ];

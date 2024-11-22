@@ -4,12 +4,13 @@ import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
+import { NavbarComponent } from "../common/navbar/navbar.component";
 
 
 @Component({
   selector: 'app-add-pet',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule, CommonModule],
+  imports: [RouterLink, ReactiveFormsModule, CommonModule, NavbarComponent],
   templateUrl: './add-pet.component.html',
   styleUrl: './add-pet.component.css'
 })
